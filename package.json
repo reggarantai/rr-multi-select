@@ -17,6 +17,7 @@
     "multiple",
     "select",
     "multiple select",
+    "multi select",
     "dropdown"
   ],
   "scripts": {
