@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Simple React Multiple Select
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Multiple select React component with "type to search" feature.
+It can handle thousands of data (up to 5000 records) synchronously with minimum latency.
 
-## Available Scripts
+There are cool & amazing packages out there,
+but I found it laggy when handling thousands of data synchronously.
+So I made this for my needs.
 
-In the project directory, you can run:
+Hope it can be useful too for your needs.
 
-### `npm start`
+## Install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install using:
+`yarn add rr-multi-select`
+or `npm install rr-multi-select`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### 1. Simple array
 
-### `npm run build`
+```javascript
+import React, {useState} from 'react'
+import RRMultiSelect from 'rr-multi-select'
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const options = [
+  "Data 1",
+  "Data 2",
+  "Data 3"
+]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const FormBlock = () => {
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  const [value,setValue] = useState([])
 
-### `npm run eject`
+  return (
+    <RRMultiSelect
+      options={options}
+      value={value}
+      onChange={setValue}
+    />
+  )
+}
+export default FormBlock
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##### 2. Array of objects
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+import React, {useState} from 'react'
+import RRMultiSelect from 'rr-multi-select'
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const options = [
+  {value:"data1",label:"Data 1"},
+  {value:"data2",label:"Data 2"},
+  {value:"data3",label:"Data 3"}
+]
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const FormBlock = () => {
 
-## Learn More
+  const [value,setValue] = useState([])
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  return (
+    <RRMultiSelect
+      options={options}
+      isObject={["value","label"]}
+      value={value}
+      onChange={setValue}
+    />
+  )
+}
+export default FormBlock
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Props
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Name                  | Description      
+| -----------           | -----------      
+| options                  | Array
+| isObject              | Array ie. ["value","label"]             
+| value                 | Array
+| placeholderText       | String ie. "Select..."                        
+| inputPlaceholder      | String ie. "Type to search..."        
+| onChange              | Function         
