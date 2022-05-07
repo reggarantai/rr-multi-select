@@ -1,4 +1,4 @@
-# Simple React Multiple Select
+# Multiple Select React Component
 
 Multiple select React component with "type to search" feature.
 It can handle thousands of data (up to 5000 records) synchronously with minimum latency.
