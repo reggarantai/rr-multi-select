@@ -1,7 +1,7 @@
 {
   "name": "rr-multi-select",
   "version": "1.0.0",
-  "description": "Multiple select React component with type to search",
+  "description": "A Simple multiple select React component with type to search feature that can handle thousands of data (up to 5000) with minimum latency",
   "main": "dist/index.cjs.js",
   "repository": {
     "type": "git",
